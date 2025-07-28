@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Penetration Testing Blog</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Penetration Testing Blog</description>
+    <generator>Hugo -- 0.147.5</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 28 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Web Application Vulnerability Scanning Techniques</title>
+      <link>http://localhost:1313/posts/web-vulnerability-scanning/</link>
+      <pubDate>Fri, 25 Jul 2025 15:30:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/web-vulnerability-scanning/</guid>
+      <description>A comprehensive guide to web application vulnerability scanning</description>
+    </item>
+    <item>
+      <title>About</title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Mon, 28 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/about/</guid>
+      <description>&lt;h1 id=&#34;about-our-penetration-testing-blog&#34;&gt;About Our Penetration Testing Blog&lt;/h1&gt;
+&lt;p&gt;Welcome to our penetration testing blog! We are cybersecurity professionals dedicated to sharing knowledge, techniques, and insights about the field of penetration testing and cybersecurity.&lt;/p&gt;
+&lt;h2 id=&#34;our-mission&#34;&gt;Our Mission&lt;/h2&gt;
+&lt;p&gt;Our mission is to:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Share practical knowledge about penetration testing techniques&lt;/li&gt;
+&lt;li&gt;Raise awareness about cybersecurity best practices&lt;/li&gt;
+&lt;li&gt;Create a community of security-minded professionals and enthusiasts&lt;/li&gt;
+&lt;li&gt;Provide valuable resources for those looking to enter or advance in the field&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;our-team&#34;&gt;Our Team&lt;/h2&gt;
+&lt;p&gt;Our team consists of experienced penetration testers, security researchers, and cybersecurity enthusiasts who are passionate about the field and committed to continuous learning and knowledge sharing.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Network Penetration Testing Methodology</title>
+      <link>http://localhost:1313/posts/network-pentest-methodology/</link>
+      <pubDate>Tue, 22 Jul 2025 10:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/network-pentest-methodology/</guid>
+      <description>A step-by-step approach to network penetration testing</description>
+    </item>
+    <item>
+      <title>404 - Page Not Found</title>
+      <link>http://localhost:1313/404.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/404.html</guid>
+      <description>Page not found</description>
+    </item>
+  </channel>
+</rss>
