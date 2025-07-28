@@ -1,5 +1,5 @@
 ---
-title: "Welcome to Our Penetration Testing Blog"
+title: "Welcome to Our bi0s Pentest Blog"
 date: 2025-07-28T12:00:00+00:00
 description: "Introduction to our penetration testing and cybersecurity blog"
 tags: ["welcome", "introduction"]
@@ -10,7 +10,7 @@ TocOpen: false
 draft: false
 ---
 
-# Welcome to Our Penetration Testing Blog
+# Welcome to Our bi0s Pentest Blog
 
 We're excited to launch this blog dedicated to sharing knowledge, techniques, and insights about penetration testing and cybersecurity.
 

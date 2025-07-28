@@ -5,9 +5,9 @@ draft: false
 showToc: false
 ---
 
-# About Our Penetration Testing Blog
+# About Our bi0s Pentest Blog
 
-Welcome to our penetration testing blog! We are cybersecurity professionals dedicated to sharing knowledge, techniques, and insights about the field of penetration testing and cybersecurity.
+Welcome to the bi0s Pentest blog! We are cybersecurity professionals dedicated to sharing knowledge, techniques, and insights about the field of penetration testing and cybersecurity.
 
 ## Our Mission
 
@@ -24,6 +24,6 @@ Our team consists of experienced penetration testers, security researchers, and 
 
 ## Contact Us
 
-Have questions, suggestions, or want to collaborate? Feel free to reach out to us through our social media channels or email us at contact@pentestblog.example.com.
+Have questions, suggestions, or want to collaborate? Feel free to reach out to us through our social media channels or email us at teambi0spentest@gmail.com.
 
 Thank you for being part of our community!

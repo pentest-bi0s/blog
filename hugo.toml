@@ -1,6 +1,6 @@
 baseURL = 'https://pentest-bi0s.github.io/'
 languageCode = 'en-us'
-title = 'Penetration Testing Blog'
+title = 'bi0s Pentest Blog'
 theme = 'PaperMod'
 
 # Enable emoji support
@@ -8,7 +8,7 @@ enableEmoji = true
 
 # Enable search functionality
 [params.homeInfoParams]
-  Title = "Welcome to Our Penetration Testing Blog"
+  Title = "Welcome to Our bi0s Pentest Blog"
   Content = "Sharing insights, techniques and knowledge about cybersecurity and penetration testing"
 
 [outputs]
@@ -17,7 +17,7 @@ enableEmoji = true
 [params]
   defaultTheme = "auto"
   ShowReadingTime = true
-  ShowShareButtons = true
+  ShowShareButtons = false
   ShowPostNavLinks = true
   ShowBreadCrumbs = true
   ShowCodeCopyButtons = true
@@ -39,11 +39,19 @@ enableEmoji = true
     name = "github"
     url = "https://github.com/pentest-bi0s"
   [[params.socialIcons]]
-    name = "twitter"
-    url = "https://twitter.com/pentestblog"
+    name = "instagram"
+    url = "https://www.instagram.com/bi0s.pentest"
+  [[params.socialIcons]]
+    name = "email"
+    url = "mailto:teambi0spentest@gmail.com"
 
 # Menu items
 [menu]
+  [[menu.main]]
+    identifier = "main-site"
+    name = "Back to Main Website"
+    url = "https://pentest.bi0s.in"
+    weight = 5
   [[menu.main]]
     identifier = "posts"
     name = "Posts"

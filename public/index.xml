@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Penetration Testing Blog</title>
+    <title>bi0s Pentest Blog</title>
     <link>http://localhost:1313/</link>
-    <description>Recent content on Penetration Testing Blog</description>
+    <description>Recent content on bi0s Pentest Blog</description>
     <generator>Hugo -- 0.147.5</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 28 Jul 2025 00:00:00 +0000</lastBuildDate>
@@ -20,8 +20,8 @@
       <link>http://localhost:1313/about/</link>
       <pubDate>Mon, 28 Jul 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/about/</guid>
-      <description>&lt;h1 id=&#34;about-our-penetration-testing-blog&#34;&gt;About Our Penetration Testing Blog&lt;/h1&gt;
-&lt;p&gt;Welcome to our penetration testing blog! We are cybersecurity professionals dedicated to sharing knowledge, techniques, and insights about the field of penetration testing and cybersecurity.&lt;/p&gt;
+      <description>&lt;h1 id=&#34;about-our-bi0s-pentest-blog&#34;&gt;About Our bi0s Pentest Blog&lt;/h1&gt;
+&lt;p&gt;Welcome to the bi0s Pentest blog! We are cybersecurity professionals dedicated to sharing knowledge, techniques, and insights about the field of penetration testing and cybersecurity.&lt;/p&gt;
 &lt;h2 id=&#34;our-mission&#34;&gt;Our Mission&lt;/h2&gt;
 &lt;p&gt;Our mission is to:&lt;/p&gt;
 &lt;ul&gt;
