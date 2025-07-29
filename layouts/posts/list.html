@@ -1,0 +1,158 @@
+{{- define "main" }}
+
+{{- if not .IsHome | and .Title }}
+<header class="page-header">
+  {{- partial "breadcrumbs.html" . }}
+  <h1>
+    {{ .Title }}
+  </h1>
+  {{- if .Description }}
+  <div class="post-description">
+    {{ .Description | markdownify }}
+  </div>
+  {{- end }}
+</header>
+{{- end }}
+
+<!-- Search functionality integrated into posts page -->
+<div id="searchbox" style="margin-bottom: 2rem;">
+    <input id="searchInput" placeholder="Search posts..." 
+        aria-label="search posts" type="search" autocomplete="off" maxlength="64"
+        style="width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--entry); color: var(--primary); font-size: 16px;">
+    <ul id="searchResults" aria-label="search results" style="margin-top: 1rem;"></ul>
+</div>
+
+{{- if .Content }}
+<div class="post-content">
+  {{- if not (.Param "disableAnchoredHeadings") }}
+  {{- partial "anchored_headings.html" .Content -}}
+  {{- else }}{{ .Content }}{{ end }}
+</div>
+{{- end }}
+
+{{- $pages := union .RegularPages .Sections }}
+
+{{- if .IsHome }}
+{{- $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{- $pages = where $pages "Params.hiddenInHomeList" "!=" "true"  }}
+{{- end }}
+
+{{- $paginator := .Paginate $pages }}
+
+{{- if and .IsHome site.Params.homeInfoParams (eq $paginator.PageNumber 1) }}
+{{- partial "home_info.html" . }}
+{{- end }}
+
+{{- $term := .Data.Term }}
+{{- range $index, $page := $paginator.Pages }}
+
+{{- $class := "post-entry" }}
+
+{{- $user_preferred := or site.Params.disableSpecial1stPost site.Params.homeInfoParams }}
+{{- if (and $.IsHome (eq $paginator.PageNumber 1) (eq $index 0) (not $user_preferred)) }}
+{{- $class = "first-entry" }}
+{{- else if $term }}
+{{- $class = "post-entry tag-entry" }}
+{{- end }}
+
+<article class="{{ $class }}">
+  {{- $isHidden := (site.Params.cover.hidden | default site.Params.cover.hiddenInList) }}
+  {{- partial "cover.html" (dict "cxt" . "IsHome" true "isHidden" $isHidden) }}
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">
+      {{ .Title }}
+      {{- if .Draft }}<sup><span class="entry-hint" title="Draft">[draft]</span></sup>{{- end }}
+    </h2>
+  </header>
+  {{- if (ne (.Param "hideSummary") true) }}
+  <div class="entry-content">
+    <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
+  </div>
+  {{- end }}
+  {{- if not (.Param "hideMeta") }}
+  <footer class="entry-footer">
+    {{- partial "post_meta.html" . -}}
+  </footer>
+  {{- end }}
+  <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+</article>
+{{- end }}
+
+{{- if gt $paginator.TotalPages 1 }}
+<footer class="page-footer">
+  <nav class="pagination">
+    {{- if $paginator.HasPrev }}
+    <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">
+      «&nbsp;{{ i18n "prev_page" | default "Prev" }}</a>
+    {{- end }}
+    {{- if $paginator.HasNext }}
+    <a class="next" href="{{ $paginator.Next.URL | absURL }}">{{ i18n "next_page" | default "Next" }}&nbsp;»
+    </a>
+    {{- end }}
+  </nav>
+</footer>
+{{- end }}
+
+<script>
+// Search functionality for posts only
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
+    const postEntries = document.querySelectorAll('.post-entry, .first-entry');
+    
+    if (!searchInput) return;
+    
+    // Get posts data for search
+    let postsData = [];
+    postEntries.forEach(entry => {
+        const title = entry.querySelector('h2')?.textContent.trim() || '';
+        const content = entry.querySelector('.entry-content p')?.textContent.trim() || '';
+        const link = entry.querySelector('.entry-link')?.href || '';
+        const meta = entry.querySelector('.entry-footer')?.textContent.trim() || '';
+        
+        postsData.push({
+            title: title,
+            content: content,
+            link: link,
+            meta: meta,
+            element: entry
+        });
+    });
+    
+    searchInput.addEventListener('input', function() {
+        const query = this.value.toLowerCase().trim();
+        
+        if (query === '') {
+            // Show all posts
+            postEntries.forEach(entry => {
+                entry.style.display = 'block';
+            });
+            searchResults.innerHTML = '';
+            return;
+        }
+        
+        // Hide all posts initially
+        postEntries.forEach(entry => {
+            entry.style.display = 'none';
+        });
+        
+        // Filter and show matching posts
+        const matches = postsData.filter(post => 
+            post.title.toLowerCase().includes(query) ||
+            post.content.toLowerCase().includes(query) ||
+            post.meta.toLowerCase().includes(query)
+        );
+        
+        if (matches.length > 0) {
+            matches.forEach(match => {
+                match.element.style.display = 'block';
+            });
+            searchResults.innerHTML = `<li style="padding: 0.5rem; color: var(--secondary);">Found ${matches.length} post${matches.length !== 1 ? 's' : ''}</li>`;
+        } else {
+            searchResults.innerHTML = '<li style="padding: 0.5rem; color: var(--secondary);">No posts found</li>';
+        }
+    });
+});
+</script>
+
+{{- end }}{{/* end main */}}
