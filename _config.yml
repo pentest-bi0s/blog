@@ -1,0 +1,126 @@
+theme: jekyll-theme-chirpy
+
+lang: en
+
+timezone: Asia/Kolkata
+
+title: bi0s Pentest Blog
+tagline: Sharing insights, techniques and knowledge about cybersecurity and penetration testing
+description: >-
+  The official blog of bi0s Pentest, sharing penetration testing techniques,
+  CTF writeups, and cybersecurity knowledge.
+
+url: "https://pentest.bi0s.in"
+
+github:
+  username: pentest-bi0s
+
+social:
+  name: bi0s Pentest
+  email: teambi0spentest@gmail.com
+  links:
+    - https://github.com/pentest-bi0s
+    - https://www.instagram.com/bi0s.pentest
+
+# Site settings
+baseurl: ""
+
+# Theme mode - light / dark / (empty for auto)
+theme_mode:
+
+# Avatar image
+avatar: /assets/img/avatar.png
+
+# Table of contents
+toc: true
+
+# Comments
+comments:
+  provider: false
+
+# Self-hosted assets
+assets:
+  self_host:
+    enabled: false
+
+# PWA feature
+pwa:
+  enabled: true
+
+# Pagination
+paginate: 10
+
+# Kramdown settings
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: highlight
+    block:
+      line_numbers: true
+
+# Collections
+collections:
+  tabs:
+    output: true
+    sort_by: order
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      comments: false
+      toc: true
+      permalink: /posts/:title/
+  - scope:
+      path: _tabs
+      type: tabs
+    values:
+      layout: page
+      permalink: /:title/
+
+# Sass settings
+sass:
+  style: compressed
+
+# Compress HTML
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  profile: false
+  blanklines: false
+  ignore:
+    envs: [development]
+
+# Exclude from build
+exclude:
+  - "*.gem"
+  - "*.gemspec"
+  - docs
+  - tools
+  - README.md
+  - LICENSE
+  - "*.config.js"
+  - package*.json
+  - deploy.sh
+  - content/
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jekyll-archives
+
+jekyll-archives:
+  enabled: [categories, tags]
+  layouts:
+    category: category
+    tag: tag
+  permalinks:
+    tag: /tags/:name/
+    category: /categories/:name/

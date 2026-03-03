@@ -1,22 +1,21 @@
 #!/bin/bash
 
-# Script to build Hugo site and deploy to GitHub Pages repository
+# Script to build Jekyll Chirpy site and deploy to GitHub Pages repository
 
 # Configuration
-HUGO_SITE_DIR="/home/d3vn37/topsecret/dev/pentest-blog/blog"
-# Change this to your actual GitHub Pages repository path
+JEKYLL_SITE_DIR="/home/d3vn37/topsecret/dev/pentest-blog/blog"
 GITHUB_PAGES_DIR="/home/d3vn37/topsecret/dev/pentest-blog/pentest-bi0s.github.io"
 
 # Print what we're doing
-echo "Building Hugo site from $HUGO_SITE_DIR"
+echo "Building Jekyll site from $JEKYLL_SITE_DIR"
 echo "Deploying to $GITHUB_PAGES_DIR"
 
-# Navigate to Hugo site directory
-cd "$HUGO_SITE_DIR" || { echo "Failed to navigate to Hugo site directory"; exit 1; }
+# Navigate to Jekyll site directory
+cd "$JEKYLL_SITE_DIR" || { echo "Failed to navigate to Jekyll site directory"; exit 1; }
 
 # Build the site with production settings
-echo "Building site with Hugo..."
-hugo --minify || { echo "Hugo build failed"; exit 1; }
+echo "Building site with Jekyll..."
+JEKYLL_ENV=production bundle exec jekyll build || { echo "Jekyll build failed"; exit 1; }
 
 # Check if GitHub Pages directory exists
 if [ ! -d "$GITHUB_PAGES_DIR" ]; then
@@ -31,7 +30,7 @@ find "$GITHUB_PAGES_DIR" -mindepth 1 -not -path "*/.git*" -not -name "CNAME" -de
 
 # Copy generated files to GitHub Pages directory
 echo "Copying generated files to GitHub Pages directory..."
-cp -R "$HUGO_SITE_DIR/public/"* "$GITHUB_PAGES_DIR/" || { echo "Failed to copy files"; exit 1; }
+cp -R "$JEKYLL_SITE_DIR/_site/"* "$GITHUB_PAGES_DIR/" || { echo "Failed to copy files"; exit 1; }
 
 # Navigate to GitHub Pages directory
 cd "$GITHUB_PAGES_DIR" || { echo "Failed to navigate to GitHub Pages directory"; exit 1; }
@@ -51,4 +50,4 @@ echo "Now run the following commands to push the changes:"
 echo "  cd $GITHUB_PAGES_DIR"
 echo "  git push origin main"
 echo ""
-echo "Once pushed, your site will be available at https://pentest-bi0s.github.io/"
+echo "Your site will be live at https://pentest.bi0s.in/ in a few minutes."
