@@ -10,7 +10,12 @@ description: >-
   The official blog of bi0s Pentest, sharing penetration testing techniques,
   CTF writeups, and cybersecurity knowledge.
 
+# The site is deployed from the "blog" repo under the pentest-bi0s org.
+# GitHub Pages serves it at pentest.bi0s.in/blog (custom domain on the org + repo name as path).
+# The GitHub Actions workflow overrides baseurl at build time via configure-pages,
+# so the value here is mainly for local development.
 url: "https://pentest.bi0s.in"
+baseurl: "/blog"
 
 github:
   username: pentest-bi0s
@@ -21,9 +26,6 @@ social:
   links:
     - https://github.com/pentest-bi0s
     - https://www.instagram.com/bi0s.pentest
-
-# Site settings
-baseurl: ""
 
 # Theme mode - light / dark / (empty for auto)
 theme_mode:

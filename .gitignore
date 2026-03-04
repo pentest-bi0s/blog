@@ -10,3 +10,4 @@ node_modules/
 # Hugo legacy (safe to delete these directories entirely)
 content/
 static/
+deploy.sh

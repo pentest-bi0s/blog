@@ -1,7 +1,8 @@
 # bi0s Pentest Blog — Maintenance Guide
 
 > **Stack:** Jekyll + [Chirpy theme](https://github.com/cotes2020/jekyll-theme-chirpy) (v7.2)
-> **Live URL:** <https://pentest.bi0s.in>
+> **Live URL:** <https://pentest.bi0s.in/blog>
+> **Repo:** `pentest-bi0s/blog`
 
 ---
 
@@ -23,31 +24,27 @@
 ## Repository Layout
 
 ```
-pentest-blog/
-├── blog/                          ← Source repo (this repo)
-│   ├── _config.yml                ← Site-wide configuration
-│   ├── Gemfile                    ← Ruby gem dependencies
-│   ├── index.html                 ← Homepage (layout: home)
-│   ├── deploy.sh                  ← Build & deploy script
-│   ├── _data/
-│   │   └── authors.yml            ← Author registry (REQUIRED)
-│   ├── _posts/                    ← Blog posts (Markdown)
-│   ├── _tabs/                     ← Navigation tabs (About, Archives, …)
-│   ├── assets/
-│   │   └── img/
-│   │       ├── avatar.png         ← Site avatar / logo
-│   │       └── posts/             ← Post-specific images
-│   └── .gitignore
-│
-└── pentest-bi0s.github.io/        ← Deployment repo (GitHub Pages)
-    ├── CNAME                      ← Custom domain config
-    └── (generated static files)
+blog/                              ← Single repo (source + deployment)
+├── _config.yml                    ← Site-wide configuration
+├── Gemfile                        ← Ruby gem dependencies
+├── index.html                     ← Homepage (layout: home)
+├── .github/
+│   └── workflows/
+│       └── pages-deploy.yml       ← GitHub Actions CI/CD workflow
+├── _data/
+│   └── authors.yml                ← Author registry (REQUIRED)
+├── _posts/                        ← Blog posts (Markdown)
+├── _tabs/                         ← Navigation tabs (About, Archives, …)
+├── assets/
+│   └── img/
+│       ├── avatar.png             ← Site avatar / logo
+│       └── posts/                 ← Post-specific images
+└── .gitignore
 ```
 
-**How it works:** You write posts and config in `blog/`. The `deploy.sh` script
-runs `jekyll build`, copies the generated `_site/` into
-`pentest-bi0s.github.io/`, and prepares a git commit. You then push that repo
-to make the site live.
+**How it works:** You write posts and config in this repo. When you push to
+`main`, a GitHub Actions workflow automatically builds the Jekyll site and
+deploys it to GitHub Pages. No separate deployment repo needed.
 
 ---
 
@@ -259,18 +256,18 @@ change content. **Do not change the `layout: page` line.**
 
 Key settings in `_config.yml`:
 
-| Setting       | Current Value           | Description                               |
-| ------------- | ----------------------- | ----------------------------------------- |
-| `title`       | bi0s Pentest Blog       | Site title                                |
-| `tagline`     | Sharing insights…       | Subtitle under title                      |
-| `description` | The official blog…      | SEO meta description                      |
-| `url`         | https://pentest.bi0s.in | Production URL                            |
-| `baseurl`     | (empty)                 | Path prefix (leave empty for root domain) |
-| `avatar`      | /assets/img/avatar.png  | Path to site avatar                       |
-| `timezone`    | Asia/Kolkata            | Timezone for post dates                   |
-| `theme_mode`  | (empty)                 | `light`, `dark`, or empty for auto        |
-| `paginate`    | 10                      | Posts per page on homepage                |
-| `toc`         | true                    | Show table of contents on posts           |
+| Setting       | Current Value           | Description                                      |
+| ------------- | ----------------------- | ------------------------------------------------ |
+| `title`       | bi0s Pentest Blog       | Site title                                       |
+| `tagline`     | Sharing insights…       | Subtitle under title                             |
+| `description` | The official blog…      | SEO meta description                             |
+| `url`         | https://pentest.bi0s.in | Production domain                                |
+| `baseurl`     | /blog                   | Path prefix (repo name, served under the domain) |
+| `avatar`      | /assets/img/avatar.png  | Path to site avatar                              |
+| `timezone`    | Asia/Kolkata            | Timezone for post dates                          |
+| `theme_mode`  | (empty)                 | `light`, `dark`, or empty for auto               |
+| `paginate`    | 10                      | Posts per page on homepage                       |
+| `toc`         | true                    | Show table of contents on posts                  |
 
 ### Social links
 
@@ -289,44 +286,46 @@ Add Twitter, LinkedIn, etc. by appending URLs to the `links` list.
 
 ## Deployment
 
-### Quick deploy
+Deployment is **fully automated** via GitHub Actions.
+
+### How it works
+
+1. You push to the `main` branch of `pentest-bi0s/blog`
+2. GitHub Actions runs `.github/workflows/pages-deploy.yml`
+3. It installs Ruby, runs `bundle exec jekyll build`, and deploys to GitHub Pages
+4. The site goes live at `https://pentest.bi0s.in/blog` within a few minutes
+
+### To deploy
 
 ```bash
-cd blog/
-bash deploy.sh
-cd ../pentest-bi0s.github.io/
+git add .
+git commit -m "Add new post: My Post Title"
 git push origin main
 ```
 
-### What `deploy.sh` does
+That's it. The workflow handles the rest.
 
-1. Runs `JEKYLL_ENV=production bundle exec jekyll build`
-2. Cleans `pentest-bi0s.github.io/` (preserves `.git/` and `CNAME`)
-3. Copies `_site/*` into the deployment repo
-4. Stages and commits all changes
-5. Prints instructions to push
+### Manual trigger
 
-### Manual deployment
+You can also trigger a deploy without pushing code:
 
-```bash
-cd blog/
-JEKYLL_ENV=production bundle exec jekyll build
-cd ../pentest-bi0s.github.io/
-# Remove old files (keep .git and CNAME)
-find . -mindepth 1 -not -path './.git*' -not -name 'CNAME' -delete
-cp -R ../blog/_site/* .
-git add .
-git commit -m "Update site - $(date)"
-git push origin main
-```
+1. Go to the repo on GitHub → **Actions** tab
+2. Select **"Build and Deploy"** workflow
+3. Click **"Run workflow"**
 
-### Don't forget to also commit the source repo
+### First-time GitHub Pages setup
+
+If Pages isn't enabled yet on the `blog` repo:
+
+1. Go to **GitHub → pentest-bi0s/blog → Settings → Pages**
+2. Under **Source**, select **"GitHub Actions"** (not "Deploy from a branch")
+3. The custom domain `pentest.bi0s.in` should already be configured on the org's `.github.io` repo — the blog will be served at `/blog` path automatically
+
+### Local preview with correct baseurl
 
 ```bash
-cd blog/
-git add .
-git commit -m "Add new post: SQL Injection Basics"
-git push origin main
+bundle exec jekyll serve --livereload
+# Site will be at http://127.0.0.1:4000/blog/
 ```
 
 ---
@@ -403,9 +402,8 @@ bundle exec jekyll serve
 - [ ] Ensure `author` key exists in `_data/authors.yml`
 - [ ] Place images in `assets/img/posts/`
 - [ ] Preview locally with `bundle exec jekyll serve --livereload`
-- [ ] Commit source to `blog/` repo
-- [ ] Run `bash deploy.sh` and push `pentest-bi0s.github.io/`
+- [ ] Commit and push to `main` — GitHub Actions deploys automatically
 
 ---
 
-_Last updated: July 2025_
+_Last updated: March 2026_
