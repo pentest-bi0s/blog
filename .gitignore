@@ -11,3 +11,6 @@ node_modules/
 content/
 static/
 deploy.sh
+
+# Windows Unwanted Files
+*Zone.Identifier
