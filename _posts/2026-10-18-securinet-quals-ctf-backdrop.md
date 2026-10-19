@@ -5,7 +5,7 @@ date: 2026-10-18 00:10:00 +0530
 description: "Walkthrough for the Backdrop Android reverse engineering challenge from Securinet-Quals CTF."
 categories: [Writeups, CTF, Mobile Security]
 tags: [ctf, android, reverse engineering, mobile security]
-author: Narain Krishna
+author: [Narain Krishna,Srikesh]
 toc: true
 ---
 
@@ -79,4 +79,4 @@ A simple python function `check` which checks the length of the parameter is 6 a
 Now we move on the actual challenge file, first as mentioned in the `AGENTS.md` file - We can run a `strings` cmd paired with `grep` to see if we get a 6 six digit pin code.   
 Running `strings backdrop.apk | grep -Eo '[0-9]{6}' | `, yields no real pin code.     
 At this point, we are better off trying the challenge by our own intution rather than the instruction written in `AGENTS.md`.    
-Firstly, We can install the apk in our emulator and see for the UI flow is.
+First, We can install the apk in our emulator and see how the UI flow is.
