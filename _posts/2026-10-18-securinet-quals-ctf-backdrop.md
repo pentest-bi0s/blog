@@ -25,10 +25,10 @@ toc: true
 ## Solution
 
 The handout was a zip file, which consisted of:       
-1.Backdrop.apk  <challenge file>
-2.AGENTS.md     <file which had instuctions for an agentic AI>
-3.README.md     <the challenge description ?>
-4.src/check.py  <a python script>
+1.Backdrop.apk  <challenge file>  \
+2.AGENTS.md     <file which had instuctions for an agentic AI>    \
+3.README.md     <the challenge description ?>    \
+4.src/check.py  <a python script>    \
 
 We can inspect these files one be one     
 ### AGENTS.md
