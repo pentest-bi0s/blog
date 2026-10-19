@@ -65,3 +65,18 @@ Dead ends: the splash and loading screens are cosmetic — the entire solve is t
 This was the cotent inside `AGENTS.md`, this seems like a instruction to an agentic AI on how to solve this challenge, We will coming back at this later on.
 
 ### src/check.py
+```
+"""Local unlock-code / flag checker (staging). Remove the reference before release."""
+# TODO: pull from the vault instead of hardcoding
+# REFERENCE_FLAG = "Securinets{str1ngs_w0nt_s4v3_y0u}"
+
+def check(code: str) -> bool:
+    return len(code) == 6 and code.isdigit()
+```
+A simple python function `check` which checks the length of the parameter is 6 and if its a numeric code, then returns a boolean value based on the evaluation.And also a "too easy to be true" flag `Securinets{str1ngs_w0nt_s4v3_y0u}`, which as expected is a fake flag.
+
+### Backdrop.apk
+Now we move on the actual challenge file, first as mentioned in the `AGENTS.md` file - We can run a `strings` cmd paired with `grep` to see if we get a 6 six digit pin code.   
+Running `strings backdrop.apk | grep -Eo '[0-9]{6}' | `, yields no real pin code.     
+At this point, we are better off trying the challenge by our own intution rather than the instruction written in `AGENTS.md`.    
+Firstly, We can install the apk in our emulator and see for the UI flow is.
