@@ -306,15 +306,15 @@ Java.perform(() => {
 });
 ```
 
-Clicking the `Reveal Flag` button displays the following:
+Clicking the `Reveal Flag` button displays - 
 
 ![Revealed flag](../assets/img/posts/securinet-quals-ctf-backdrop/image-3.png)
 
-### Flag
+## Flag
 
 `Securinets{https://github.com/flutter/flutter/issues/163421}`
 
-**P.S.:** Credit goes to @Srikesh for figuring this out early and solving the challenge.
+**P.S.:** Credit to @Srikesh for figuring this out early and solving the challenge.
 The APK might behave differently on Genymotion emulators. In my case, the emulator froze, and I had to restart it every time I kept the APK open for more than three seconds.
 The logcat showed no useful logs because the APK was not crashing; the emulator itself was crashing.
 If you encounter the same issue, try using an Android Studio emulator with root access.
