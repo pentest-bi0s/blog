@@ -91,11 +91,11 @@ At this point, we are better off trying the challenge on our own rather than fol
 
 #### LauncherActivity
 
-![Launcher activity](../assets/img/posts/securinet-quals-ctf-backdrop/image-1.png)
+![Launcher activity](/assets/img/posts/securinet-quals-ctf-backdrop/image-1.png)
 
 This runs for about five seconds, after which we see the next activity.
 
-![Timer activity](../assets/img/posts/securinet-quals-ctf-backdrop/image-2.png)
+![Timer activity](/assets/img/posts/securinet-quals-ctf-backdrop/image-2.png)
 
 We get this screen, but when we click the `Reveal Flag` button, a timer starts at `36:00:00`.
 
