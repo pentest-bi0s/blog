@@ -88,7 +88,7 @@ private static final byte[] TABLE = {63, -95, 8, -44, 98, -100, 23, -27, 75, 122
 ```
 
 So, our python script should:
-```mermaid
+<!-- ```mermaid
 flowchart TD
     A["Encrypted chunk"] --> B["for i, b in enumerate(chunk)"]
 
@@ -117,7 +117,7 @@ flowchart TD
     N -->|Yes| B
     N -->|No| O["bytes(decoded bytes)"]
     O --> P["Return result"]
-```
+``` -->
 
 We can write a script which does the above decoding,
 
