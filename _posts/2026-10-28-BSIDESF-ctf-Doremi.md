@@ -69,7 +69,8 @@ The `MainActivty` is simple, it is just a Welcome Screen with a button.When clic
 
 ## FrameActivity
 
-- This is the decompiled code of `FrameActivity`.
+This is the decompiled code of `FrameActivity`.
+
 ```
 public final class FrameActivity extends ComponentActivity {
     public static final int $stable = 8;
@@ -101,7 +102,7 @@ These files are available as `.xml` files in `res/drawable`, which we can inspec
 
 ## Sus Images
 
-Instead of usual formats like `.png` or `.jpeg` , Android stores these images in `.xml` file
+Instead of usual formats like `.png` or `.jpeg` , Android stores these images in `.xml` file       
 In this case , it looks like : 
 
 ```
@@ -162,7 +163,7 @@ In this case , it looks like :
         android:fillAlpha="0.898"/>
 </vector>
 ```
-It is not possible to decode the image in this format, we must convert the image vector to svg
+It is not possible to decode the image in this format, we must convert the image vector to svg     
 For that we can use a online tool               
 link:https://vd.floo.app/
 
