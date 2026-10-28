@@ -131,5 +131,6 @@ We can decode the encoded value in terminal,        \
 `echo "YmtjdGZ7dGgzX3czMXJkM3N0X2IxbjRyeV94bTFfZjBybTR0X2wwbGx9" | base64 -d`
 
 # Flag
+---------------------------------------------------
 
 `bkctf{th3_w31rd3st_b1n4ry_xm1_f0rm4t_l0ll}`
