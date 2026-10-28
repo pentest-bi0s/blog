@@ -64,7 +64,8 @@ This code snippet has the details about the encrpytion like `'SEAL_SALT': 'total
 Nearby to it , we can see functions like `openSealed()` and `deriveKeys()`
 
 Here, is an abstract idea of what the APK is doing :
-```Reward Code
+```
+Reward Code
     |
     v
 validate
