@@ -131,7 +131,6 @@ There are 4 encryptions text or bands in the js file.
 The flow of decryption is :  
 
 ```
-
 Band 4/5/6/9 Encrypted Base64
           |
           v
