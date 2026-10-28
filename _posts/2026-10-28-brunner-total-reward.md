@@ -130,7 +130,9 @@ There are 4 encryptions text or bands in the js file.
 
 The flow of decryption is :  
 
-```Band 4/5/6/9 Encrypted Base64
+```
+
+Band 4/5/6/9 Encrypted Base64
           |
           v
      Base64 Decode
@@ -171,6 +173,7 @@ First 16 bytes       Exclude last 32 bytes
                        |
                        v
                    Decrypted
+
 ```
 We can write a python script with the above functionality and check for all the bands.
 
