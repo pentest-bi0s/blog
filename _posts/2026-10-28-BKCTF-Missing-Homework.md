@@ -29,6 +29,9 @@ Can you help me figure out what I hid in this file?
 
 We can start by opening the APK the in jadx.
 This APK has only one Activity - MainActivity, We get the decompiled code of MainActivity from jadx,
+
+### MainActivity
+
 ```
 public final class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
@@ -65,6 +68,8 @@ public final class MainActivity extends AppCompatActivity {
 
 As, we look through it we find nothing interesting or anything related to the flag.
 The challenge had one more python script along it :
+
+### sus Python Script
 
 ```
 import struct
@@ -108,6 +113,8 @@ This python script hints us on where the flag could be, that is this script enco
 
 This blog explains how the string was "injected" into AndroidManifest.xml      \
 link:https://medium.com/@zahidaz/you-can-hide-an-elephant-in-androidmanifest-xml-8a1a8d0ef206
+
+### Elephant hiding in AndroidMainfest.xml
 
 It is stored in a binary format that Google never officially named, though it gets called binary XML, compiled XML, or, most often in the community, AXML (Android XML).
 
