@@ -10,7 +10,7 @@ toc: true
 ---
 
 # Challenge Info
------------
+
 | Field | Details |
 | --- | --- |
 | CTF | BrunnerCTF |
