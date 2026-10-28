@@ -47,7 +47,7 @@ public final class MainActivity extends ComponentActivity {
 ```
 ## Part 1
 
-We already see the part 1 of the flag stored in the variable `flag1 = dalctf{4ndr0id` 
+We already see the part 1 of the flag stored in the variable `flag1 = dalctf{4ndr0id`         
 Since, the variable is named `flag1` we can use the global search function (`ctrl + SHIFT + F `) of jadx and search for `flag2`, `flag3` etc ..
 
 ## Part 2
