@@ -136,5 +136,5 @@ We can decode the encoded value in terminal,        \
 ---------------------------------------------------
 
 ```
-bkctf{th3_w31rd3st_b1n4ry_xm1_f0rm4t_l0ll}
+bkctf{th3_w31rd3st_b1n4ry_xm1_f0rm4t_l0ll}  
 ```
