@@ -163,7 +163,7 @@ In this case , it looks like :
         android:fillAlpha="0.898"/>
 </vector>
 ```
-It is not possible to decode the image in this format, we must convert the image vector to svg     
+It is not possible to decode the image in this format, we must convert the image vector to svg      
 For that we can use a online tool               
 link:https://vd.floo.app/
 
