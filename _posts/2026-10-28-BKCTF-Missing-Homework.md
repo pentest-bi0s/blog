@@ -106,7 +106,7 @@ except Exception as e:
     print(f"\n[!] Error: {e}")
     import traceback
     traceback.print_exc()
-    sys.exit(1)
+    sys.exit(1) 
 ```
 As we see, this script has a function `inject_into_androidmanifest` which takes in two parameters -          
 1. apk file         
