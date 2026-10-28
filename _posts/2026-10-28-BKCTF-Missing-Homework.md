@@ -9,7 +9,7 @@ author: Narain Krishna
 toc: true
 ---
 
-## Challenge Info
+# Challenge Info
 
 | Field | Details |
 | --- | --- |
@@ -17,7 +17,7 @@ toc: true
 | Challenge | Missing Homework |
 | Category | Android / Reverse Engineering |
 
-## Description
+# Description
 
 ```text
 Jono I dug up this homework assignment from my "stegnography" class when that was the coolest thing on the internet. However, I lost the code I used to do it with.
@@ -25,12 +25,12 @@ Jono I dug up this homework assignment from my "stegnography" class when that wa
 Can you help me figure out what I hid in this file?
 ```
 
-## Solution
+# Solution
 
 We can start by opening the APK the in jadx.
 This APK has only one Activity - MainActivity, We get the decompiled code of MainActivity from jadx,
 
-### MainActivity
+## MainActivity
 
 ```
 public final class MainActivity extends AppCompatActivity {
@@ -69,7 +69,7 @@ public final class MainActivity extends AppCompatActivity {
 As, we look through it we find nothing interesting or anything related to the flag.
 The challenge had one more python script along it :
 
-### sus Python Script
+## sus Python Script
 
 ```
 import struct
@@ -116,7 +116,7 @@ This python script hints us on where the flag could be, that is this script enco
 This blog explains how the string was "injected" into AndroidManifest.xml      \
 link:https://medium.com/@zahidaz/you-can-hide-an-elephant-in-androidmanifest-xml-8a1a8d0ef206
 
-### Elephant hiding in AndroidMainfest.xml
+## Elephant hiding in AndroidMainfest.xml
 
 It is stored in a binary format that Google never officially named, though it gets called binary XML, compiled XML, or, most often in the community, AXML (Android XML).
 
@@ -130,6 +130,6 @@ In the Template Result Window, we can expand StringOffset attribute, after scrol
 We can decode the encoded value in terminal,        \
 `echo "YmtjdGZ7dGgzX3czMXJkM3N0X2IxbjRyeV94bTFfZjBybTR0X2wwbGx9" | base64 -d`
 
-## Flag
+# Flag
 
 `bkctf{th3_w31rd3st_b1n4ry_xm1_f0rm4t_l0ll}`
