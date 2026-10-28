@@ -106,7 +106,9 @@ except Exception as e:
     traceback.print_exc()
     sys.exit(1)
 ```
-As we see, this script has a function inject_into_androidmanifest which takes in two parameters - apk file and the string to inject
+As we see, this script has a function `inject_into_androidmanifest` which takes in two parameters -          
+1. apk file         
+2. string to inject        
 
 It encodes in string in base64 and injects it into AndroidManifest.xml file.
 This python script hints us on where the flag could be, that is this script encodes the flag in base64 and injects it char by char into AndroidManifest.xml
@@ -123,10 +125,11 @@ So, basically the base64 encoded flag is in the string pool of AndroidManifest.x
 To view the string pool of AndroidManifest.xml we need to use a tool, im using 101 Editor, which was available in yay repo
 After installing it , we can open that and we need to install AndroidManifest.bt from the Template Respository.
 After installing the Template, we need to excute it and view it by enabling the template result window.
-In the Template Result Window, we can expand StringOffset attribute, after scrolling down a bit we see single char values, we can combine all the individual char to get YmtjdGZ7dGgzX3czMXJkM3N0X2IxbjRyeV94bTFfZjBybTR0X2wwbGx9
+In the Template Result Window, we can expand StringOffset attribute, after scrolling down a bit we see single char values, we can combine all the individual char to get `YmtjdGZ7dGgzX3czMXJkM3N0X2IxbjRyeV94bTFfZjBybTR0X2wwbGx9`
 
 We can decode the encoded value in terminal,        \
 `echo "YmtjdGZ7dGgzX3czMXJkM3N0X2IxbjRyeV94bTFfZjBybTR0X2wwbGx9" | base64 -d`
 
 ## Flag
+
 `bkctf{th3_w31rd3st_b1n4ry_xm1_f0rm4t_l0ll}`
