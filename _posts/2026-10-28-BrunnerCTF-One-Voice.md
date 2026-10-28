@@ -88,36 +88,53 @@ private static final byte[] TABLE = {63, -95, 8, -44, 98, -100, 23, -27, 75, 122
 ```
 
 So, our python script should:
-<!-- ```mermaid
-flowchart TD
-    A["Encrypted chunk"] --> B["for i, b in enumerate(chunk)"]
-
-    B --> C["rotation = (i % 7) + 1"]
-
-    C --> D["rotate_right8(b, rotation)"]
-    D --> E["Rotated byte"]
-
-    B --> F["i % len(TABLE)"]
-    F --> G["TABLE[i % len(TABLE)]"]
-
-    B --> H["i % len(salt)"]
-    H --> I["salt[i % len(salt)]"]
-
-    G --> J["XOR"]
-    I --> J
-
-    J --> K["keystream_byte(i, salt)"]
-
-    E --> L["XOR"]
-    K --> L
-
-    L --> M["Decoded byte"]
-
-    M --> N{"Next byte?"}
-    N -->|Yes| B
-    N -->|No| O["bytes(decoded bytes)"]
-    O --> P["Return result"]
-``` -->
+```
+Encrypted chunk
+      |
+      v
+For each byte (i, b) in chunk
+      |
+      +-----------------------------+
+      |                             |
+      v                             v
+Calculate rotation              Get TABLE byte
+(i % 7) + 1                     TABLE[i % len(TABLE)]
+      |                             |
+      v                             |
+Rotate byte right                 |
+rotate_right8(b, rotation)         |
+      |                             |
+      v                             |
+Rotated byte                       |
+                                    |
+                                    v
+                              +-----------+
+Get salt byte ---------------->|    XOR    |
+salt[i % len(salt)]             +-----------+
+                                    |
+                                    v
+                         keystream_byte(i, salt)
+                                    |
+                                    v
+                              +-----------+
+Rotated byte ---------------->|    XOR    |
+                              +-----------+
+                                    |
+                                    v
+                               Decoded byte
+                                    |
+                                    v
+                              Next byte?
+                             /          \
+                           Yes           No
+                            |             |
+                            v             v
+                     Process next    bytes(decoded
+                         byte)           bytes)
+                                          |
+                                          v
+                                     Return result
+```
 
 We can write a script which does the above decoding,
 
